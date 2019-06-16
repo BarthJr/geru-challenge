@@ -1,0 +1,12 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="content">
+        <h1><b>Random Quote</b></h1>
+        <ul>
+            {% if quote %}
+                <li><h3>{{ quote_number }} - {{ quote }}</h3></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock content %}
