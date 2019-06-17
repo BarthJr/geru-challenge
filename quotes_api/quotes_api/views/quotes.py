@@ -1,14 +1,23 @@
 import random
 from uuid import uuid4
 
+import transaction
 from pyramid.view import view_config
 
 import gerulib
+from quotes_api.models.models import SessionLogs, DBSession
 
 
 def handle_session(session, url):
     if 'id' not in session:
         session['id'] = str(uuid4())
+
+    session_logs = SessionLogs(
+        uid=session['id'],
+        url=url
+    )
+    DBSession.add(session_logs)
+    transaction.commit()
 
 
 @view_config(route_name='home', renderer='../templates/home.jinja2')
