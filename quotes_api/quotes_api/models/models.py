@@ -1,29 +1,27 @@
-from zope.sqlalchemy import ZopeTransactionExtension
+from datetime import datetime
 from .meta import Base
 
 from sqlalchemy import (
     Column,
-    Index,
     Integer,
     Text,
-    DateTime,
+    DateTime
 )
-
 
 from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
 )
 
+from zope.sqlalchemy import ZopeTransactionExtension
+
 DBSession = scoped_session(
     sessionmaker(extension=ZopeTransactionExtension()))
 
 
-class MyModel(Base):
-    __tablename__ = 'models'
+class SessionLogs(Base):
+    __tablename__ = 'session'
     id = Column(Integer, primary_key=True)
-    name = Column(Text)
-    value = Column(Integer)
-
-
-Index('my_index', MyModel.name, unique=True, mysql_length=255)
+    uid = Column(Text)
+    url = Column(Text)
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
