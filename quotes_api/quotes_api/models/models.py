@@ -5,7 +5,8 @@ from sqlalchemy import (
     Column,
     Integer,
     Text,
-    DateTime
+    Date,
+    Time,
 )
 
 from sqlalchemy.orm import (
@@ -24,4 +25,5 @@ class SessionLogs(Base):
     id = Column(Integer, primary_key=True)
     uid = Column(Text)
     url = Column(Text)
-    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+    date = Column(Date, default=datetime.utcnow)
+    time = Column(Time, default=lambda: datetime.utcnow().time())
