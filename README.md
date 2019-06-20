@@ -12,8 +12,8 @@ More details about challenge: [GeruChallenge](https://gist.github.com/debonzi-ge
 2. Change to the directory was created by the clone
 3. Install pipenv
 4. Install the dependencies
-5. Run the tests
-6. Create database
+5. Create database
+6. Run the tests
 7. Run the server
 
 ``` console
@@ -21,8 +21,8 @@ git clone git@github.com:BarthJr/geru-challenge.git
 cd geru-challenge/quotes_api
 pip install pipenv
 pipenv install -d
-pipenv run pytest
 alembic upgrade head
+pipenv run pytest
 pserve development.ini --reload
 ```
 
@@ -38,3 +38,4 @@ Random Quote|/quotes/random/|Displays random quote
 **HTTP Method**|**URI Path**|**Description**
 :--|:--|:--
 GET|/sessions|Returns all sessions
+GET|/sessions/<uid>|Returns uid's by sessions
