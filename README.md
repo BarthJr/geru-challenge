@@ -38,4 +38,4 @@ Random Quote|/quotes/random/|Displays random quote
 **HTTP Method**|**URI Path**|**Description**
 :--|:--|:--
 GET|/sessions|Returns all sessions
-GET|/sessions/<uid>|Returns uid's by sessions
+GET|/sessions/{uid}|Returns uid's by sessions
