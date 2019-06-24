@@ -20,6 +20,7 @@ requires = [
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
+    'requests',
     'cornice==3.5.1',
     'marshmallow==2.19.4',
 ]
