@@ -1,7 +1,9 @@
 import random
+from http import HTTPStatus
 from uuid import uuid4
 
 import transaction
+from pyramid import httpexceptions
 from pyramid.view import view_config
 
 import gerulib
@@ -35,8 +37,11 @@ def get_quotes(request):
 
 @view_config(route_name='quote', renderer='../templates/quote.jinja2')
 def get_quote(request):
-    handle_session(request.session, request.current_route_url())
-    response = gerulib.get_quote(request.matchdict.get('quote_number'))
+    try:
+        handle_session(request.session, request.current_route_url())
+        response = gerulib.get_quote(request.matchdict.get('quote_number'))
+    except ValueError:
+        raise httpexceptions.exception_response(HTTPStatus.NOT_FOUND)
     return dict(quote_number=request.matchdict.get('quote_number'), quote=response.get('quote'))
 
 
