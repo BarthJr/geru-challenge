@@ -21,6 +21,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'requests',
+    'flake8',
     'cornice==3.5.1',
     'marshmallow==2.19.4',
 ]
