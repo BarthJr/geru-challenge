@@ -10,7 +10,8 @@ More details about challenge: [GeruChallenge](https://gist.github.com/debonzi-ge
 
 1. Clone the repository
 2. Change to the directory was created by the clone
-3. Install pipenv
+3. Create virtualenv with Python 3.7
+4. Activate virtualenv
 4. Install the dependencies
 5. Create database
 6. Run the tests
@@ -19,10 +20,11 @@ More details about challenge: [GeruChallenge](https://gist.github.com/debonzi-ge
 ``` console
 git clone git@github.com:BarthJr/geru-challenge.git
 cd geru-challenge/quotes_api
-pip install pipenv
-pipenv install -d
+python3 -m venv ./.venv
+source .venv/bin/activate
+pip install -e ".[testing]"
 alembic upgrade head
-pipenv run pytest
+pytest
 pserve development.ini --reload
 ```
 
